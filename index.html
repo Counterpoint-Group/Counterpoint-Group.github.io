@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python on GitHub Pages</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+
+    <h1>Hello from Python!</h1>
+    <p>The current time according to Python is:</p>
+    
+    <script type="py">
+        from datetime import datetime
+        import display
+
+        now = datetime.now()
+        display.append(f"The date and time is {now.strftime('%A, %d %B %Y %H:%M:%S')}", target="output")
+    </script>
+
+    <div id="output" style="font-weight: bold; color: blue;"></div>
+
+</body>
+</html>
