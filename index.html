@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python on GitHub Pages</title>
+    <title>Python Data on GitHub</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 </head>
 <body>
 
-    <h1>Hello from Python!</h1>
-    <p>The current time according to Python is:</p>
-    
+    <h1>Pandas Analysis in the Browser</h1>
+    <div id="table-output"></div>
+
+    <py-config>
+        packages = ["pandas"]
+    </py-config>
+
     <script type="py">
-        from datetime import datetime
-        import display
+        import pandas as pd
+        from pyscript import display
 
-        now = datetime.now()
-        display.append(f"The date and time is {now.strftime('%A, %d %B %Y %H:%M:%S')}", target="output")
+        # Create a simple DataFrame
+        data = {
+            "Fruit": ["Apples", "Bananas", "Cherries"],
+            "Quantity": [15, 30, 45],
+            "Price": [1.50, 0.50, 3.00]
+        }
+        df = pd.DataFrame(data)
+
+        # Calculate a new column
+        df["Total Value"] = df["Quantity"] * df["Price"]
+
+        # Display the dataframe as an HTML table
+        display(df, target="table-output")
     </script>
-
-    <div id="output" style="font-weight: bold; color: blue;"></div>
 
 </body>
 </html>
