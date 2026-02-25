@@ -44,6 +44,35 @@
             color: white;
             padding: 40px 0;
         }
+        /* Placeholder background if image fails */
+        .card-img-container {
+            height: 250px;
+            background-color: #343a40; /* Dark slate fallback */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-img-top {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Text that shows ONLY if the image is missing */
+        .img-fallback-text {
+            position: absolute;
+            color: rgba(255,255,255,0.5);
+            font-weight: bold;
+            z-index: 0;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -97,39 +126,47 @@
 
     <section id="destinations" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Top Destinations</h2>
+            <h2 class="text-center mb-5 fw-bold border-bottom pb-3">Explore Aotearoa</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Milford Sound">
-                        <div class="card-body text-center">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-img-container">
+                            <span class="img-fallback-text">MILFORD SOUND</span>
+                            <img src="https://picsum.photos/id/1015/800/600" class="card-img-top" alt="Milford Sound">
+                        </div>
+                        <div class="card-body">
                             <h5 class="card-title fw-bold">Milford Sound</h5>
-                            <p class="card-text text-muted">A breathtaking fiord carved by glaciers, surrounded by sheer cliffs and waterfalls.</p>
+                            <p class="card-text text-muted small">A dramatic fiord featuring Mitre Peak and rainforests.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1589871146128-db629858352b?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Queenstown">
-                        <div class="card-body text-center">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-img-container">
+                            <span class="img-fallback-text">QUEENSTOWN</span>
+                            <img src="https://picsum.photos/id/1016/800/600" class="card-img-top" alt="Queenstown">
+                        </div>
+                        <div class="card-body">
                             <h5 class="card-title fw-bold">Queenstown</h5>
-                            <p class="card-text text-muted">The adventure capital of the world, nestled against the stunning Remarkables range.</p>
+                            <p class="card-text text-muted small">The world's adventure capital on the shores of Lake Wakatipu.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1549413243-7f9810f7605d?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Hobbiton">
-                        <div class="card-body text-center">
+                    <div class="card h-100 shadow border-0">
+                        <div class="card-img-container">
+                            <span class="img-fallback-text">HOBBITON</span>
+                            <img src="https://picsum.photos/id/1040/800/600" class="card-img-top" alt="Hobbiton">
+                        </div>
+                        <div class="card-body">
                             <h5 class="card-title fw-bold">Hobbiton</h5>
-                            <p class="card-text text-muted">Experience the magic of Middle-earth at the lush, permanent movie set in Matamata.</p>
+                            <p class="card-text text-muted small">Step into the Shire at this lush movie set in Matamata.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="contact" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
