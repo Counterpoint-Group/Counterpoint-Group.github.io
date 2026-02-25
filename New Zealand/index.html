@@ -27,9 +27,17 @@
             font-size: 2.5rem;
             color: #0d6efd;
         }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f8f9fa; /* Light grey fallback */
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+        }
         .card-img-top {
-            height: 200px;
-            object-fit: cover;
+            min-height: 200px;
+            background-color: #e9ecef;
         }
         footer {
             background-color: #212529;
@@ -89,32 +97,32 @@
 
     <section id="destinations" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Top Destinations</h2>
+            <h2 class="text-center mb-5 fw-bold">Top Destinations</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1449480161205-244675945d8e?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Milford Sound">
-                        <div class="card-body">
+                        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Milford Sound">
+                        <div class="card-body text-center">
                             <h5 class="card-title fw-bold">Milford Sound</h5>
-                            <p class="card-text text-muted">Often called the 'eighth wonder of the world,' featuring dramatic fiords and waterfalls.</p>
+                            <p class="card-text text-muted">A breathtaking fiord carved by glaciers, surrounded by sheer cliffs and waterfalls.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1543348231-39fe38466e88?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Queenstown">
-                        <div class="card-body">
+                        <img src="https://images.unsplash.com/photo-1589871146128-db629858352b?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Queenstown">
+                        <div class="card-body text-center">
                             <h5 class="card-title fw-bold">Queenstown</h5>
-                            <p class="card-text text-muted">The adventure capital of the world. Bungee jump, ski, or just enjoy the lake views.</p>
+                            <p class="card-text text-muted">The adventure capital of the world, nestled against the stunning Remarkables range.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1549413243-7f9810f7605d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Hobbiton">
-                        <div class="card-body">
+                        <img src="https://images.unsplash.com/photo-1549413243-7f9810f7605d?q=80&w=800&auto=format&fit=crop" class="card-img-top" alt="Hobbiton">
+                        <div class="card-body text-center">
                             <h5 class="card-title fw-bold">Hobbiton</h5>
-                            <p class="card-text text-muted">Step into Middle-earth and visit the actual movie set from The Lord of the Rings.</p>
+                            <p class="card-text text-muted">Experience the magic of Middle-earth at the lush, permanent movie set in Matamata.</p>
                         </div>
                     </div>
                 </div>
