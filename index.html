@@ -1,109 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Services | The Things We Do</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@1.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Core Services | Dark Mode Edition</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
     <style>
+        :root {
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --bg-gradient: radial-gradient(circle at 0% 0%, #ffffff 0%, #f0f4ff 100%);
+            --text-main: #202124;
+        }
+
+        [data-bs-theme="dark"] {
+            --bg-gradient: radial-gradient(circle at 0% 0%, #121212 0%, #1a1a2e 100%);
+            --text-main: #f8f9fa;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        .hero-section {
-            padding: 80px 0 40px;
-            text-align: center;
-        }
-
-        .hero-section h1 {
-            font-weight: 700;
-            font-size: 3.5rem;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        .sub-header {
-            color: #4285F4;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Service Card Styling */
-        .service-card {
-            border-radius: 50px; /* Rounded pill shape from your image */
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            border: none;
+        /* Dark Mode Toggle Button */
+        #btn-theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 80px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: none;
+            transition: transform 0.3s;
         }
 
-        .service-card:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        #btn-theme-toggle:hover { transform: scale(1.1); }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: -2px;
+            background: linear-gradient(90deg, var(--text-main), #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Color Palette from Image */
-        .bg-blue { background-color: #4285F4; }
-        .bg-yellow { background-color: #FBBC05; }
-        .bg-red { background-color: #EA4335; }
-        .bg-green { background-color: #34A853; }
+        .service-pill {
+            border-radius: 100px;
+            padding: 22px 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotateX(10deg) rotateZ(-1deg);
+        }
 
-        .footer {
-            padding: 50px 0;
-            text-align: center;
-            color: #666;
+        .service-pill:hover {
+            transform: scale(1.03) translateY(-5px) rotateZ(0deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Brand Color Gradients */
+        .pill-blue { background: linear-gradient(135deg, var(--google-blue), #356ac3); }
+        .pill-red { background: linear-gradient(135deg, var(--google-red), #c5392d); }
+        .pill-yellow { background: linear-gradient(135deg, var(--google-yellow), #e0a904); }
+        .pill-green { background: linear-gradient(135deg, var(--google-green), #2d8e47); }
+
+        /* Dark Mode specific tweaks */
+        [data-bs-theme="dark"] .service-pill {
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tag-icon {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 15px;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <div class="container">
-            <p class="sub-header">The Things We Do..</p>
-            <h1>Core Services</h1>
-            <p class="lead text-muted mt-3">Innovative solutions for your digital growth and management needs.</p>
+    <button id="btn-theme-toggle" class="btn btn-primary">
+        <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
+    </button>
+
+    <section class="container py-5">
+        <div class="text-center mb-5 mt-4">
+            <span class="fw-bold text-uppercase text-primary tracking-widest" style="letter-spacing: 3px;">The Things We Do..</span>
+            <h1 class="hero-title">Core Services</h1>
         </div>
-    </header>
 
-    <section class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                
-                <div class="service-card bg-blue">Marketing Strategy</div>
-                <div class="service-card bg-yellow">Advertising</div>
-                <div class="service-card bg-red">Web Development</div>
-                <div class="service-card bg-green">Google Workspace</div>
-                <div class="service-card bg-blue">Cloud Storage</div>
-                <div class="service-card bg-red">Web Hosting</div>
-                <div class="service-card bg-yellow">Hotel Booking & Management Software</div>
-                <div class="service-card bg-green">Tour Booking & Management Software</div>
-                <div class="service-card bg-blue">App Development</div>
-
-            </div>
+        <div class="mx-auto" style="max-width: 650px;">
+            <div class="service-pill pill-blue"><span><span class="tag-icon">01</span> Marketing Strategy</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-yellow"><span><span class="tag-icon">02</span> Advertising</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-red"><span><span class="tag-icon">03</span> Web Development</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-green"><span><span class="tag-icon">04</span> Google Workspace</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-blue"><span><span class="tag-icon">05</span> Cloud Storage</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-red"><span><span class="tag-icon">06</span> Web Hosting</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-yellow"><span><span class="tag-icon">07</span> Hotel Booking Software</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-green"><span><span class="tag-icon">08</span> Tour Booking Software</span><i class="bi bi-chevron-right"></i></div>
+            <div class="service-pill pill-blue"><span><span class="tag-icon">09</span> App Development</span><i class="bi bi-chevron-right"></i></div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container border-top pt-4">
-            <p>&copy; 2026 Your Company Name. All rights reserved.</p>
-            <button class="btn btn-outline-primary rounded-pill px-4">Get Started Today</button>
-        </div>
-    </footer>
+    <script>
+        const btn = document.getElementById('btn-theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const html = document.documentElement;
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        btn.addEventListener('click', () => {
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+                html.setAttribute('data-bs-theme', 'light');
+                icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+                icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+            }
+        });
+    </script>
 </body>
 </html>
